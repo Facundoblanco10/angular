@@ -12,6 +12,7 @@ import { Product } from './product.model';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  widthImg = 10;
   name = 'Bocha';
   age = 21;
   img = 'https://source.unsplash.com/random';
@@ -23,6 +24,11 @@ export class AppComponent {
   }
   names: string[] = ['Bocha', 'Pablo', 'Juan', 'Pedro', 'Lucas', 'Marcos', 'Mateo'];
   newName: string = '';
+  box = {
+    width: 100,
+    height: 100,
+    background: 'red'
+  };
   products: Product[] = [
     {
       name: 'EL mejor juguete',
