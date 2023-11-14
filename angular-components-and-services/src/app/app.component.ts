@@ -59,9 +59,13 @@ export class AppComponent {
       image: 'https://static.platzi.com/media/user_upload/glasses-05350737-5831-4c98-be55-824399206dba.jpg'
     },
   ];
-
+  showImg: boolean = true;
 
   onLoaded(img: string) {
     console.log("log padre", img);
+  }
+
+  toggleImg() {
+    this.showImg = !this.showImg;
   }
 }
