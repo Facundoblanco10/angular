@@ -51,10 +51,10 @@ export class ImgComponent
     // before render
     // async -- once time
     console.log('ngOnInit', 'imgValue =>', this.img);
-    this.counterFunc = window.setInterval(() => {
-      this.counter++;
-      console.log('counter', this.counter);
-    }, 1000);
+    // this.counterFunc = window.setInterval(() => {
+    //   this.counter++;
+    //   console.log('counter', this.counter);
+    // }, 1000);
   }
 
   ngAfterViewInit(): void {
