@@ -9,5 +9,10 @@ import { CommonModule } from '@angular/common';
   styleUrl: './nav.component.scss'
 })
 export class NavComponent {
+  showMenu = false;
 
+
+  toggleMenu() {
+    this.showMenu = !this.showMenu;
+  }
 }
