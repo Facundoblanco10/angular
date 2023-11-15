@@ -15,4 +15,8 @@ export class LabsComponent {
     'Crear proyecto',
     'Crear componentes',
   ];
+  name: string = 'Bocha';
+  age: number = 21;
+  disabled: boolean = true;
+  img: string = 'https://picsum.photos/200';
 }
