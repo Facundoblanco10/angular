@@ -1,9 +1,10 @@
 <p>La Cantidad {{ myShoppingCart.length }}</p>
 <p>El total ${{ total }}</p>
 <p> Today: {{ today | date: 'medium' }} </p>
-<p> Other Date: {{ date | date: 'medium' }} </p>
-<p> {{ 'Mi cumPleaños estA arriBA' | uppercase}}</p>
-<p> {{ 'Roma se amor' | reverse }}</p>
+<p> Other Date: {{ date | timeAgo }} </p>
+<p>{{ 'Mi cumPleaños estA arriBA' | uppercase}}</p>
+<p>{{ 'Roma se amor' | reverse }}</p>
+<p>{{ 'Yo no se por que me dejasteee si todo iba de bien pa mejor' | r3pl4c3 }}</p>
 <div class="products-grid">
   <app-product
     [product]="product"

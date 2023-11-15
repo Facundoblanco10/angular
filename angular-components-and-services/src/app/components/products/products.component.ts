@@ -5,11 +5,19 @@ import { ProductComponent } from '../product/product.component';
 import { StoreService } from '../../services/store.service';
 import { ProductsService } from '../../services/products.service';
 import { ReversePipe } from '../../pipes/reverse.pipe';
+import { TimeAgoPipe } from '../../pipes/time-ago.pipe';
+import { R3pl4c3Pipe } from '../../pipes/r3pl4c3.pipe';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule, ProductComponent, ReversePipe],
+  imports: [
+    CommonModule,
+    ProductComponent,
+    ReversePipe,
+    TimeAgoPipe,
+    R3pl4c3Pipe,
+  ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',
 })
@@ -20,15 +28,15 @@ export class ProductsComponent {
   today: Date = new Date();
   date: Date = new Date(2002, 4, 10);
 
-  constructor (
+  constructor(
     private storeService: StoreService,
     private productsService: ProductsService
-    ) {
+  ) {
     this.myShoppingCart = this.storeService.getShoppingCart();
   }
 
   ngOnInit(): void {
-    this.productsService.getAllProducts().subscribe(data => {
+    this.productsService.getAllProducts().subscribe((data) => {
       this.products = data;
     });
   }
