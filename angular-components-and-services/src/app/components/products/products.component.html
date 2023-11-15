@@ -1,5 +1,8 @@
 <p>La Cantidad {{ myShoppingCart.length }}</p>
 <p>El total ${{ total }}</p>
+<p> Today: {{ today | date: 'medium' }} </p>
+<p> Other Date: {{ date | date: 'medium' }} </p>
+<p> {{ 'Mi cumPleaños estA arriBA' | uppercase}}</p>
 <div class="products-grid">
   <app-product
     [product]="product"
