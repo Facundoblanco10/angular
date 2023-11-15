@@ -4,11 +4,12 @@ import { Product } from '../../models/product.model';
 import { ProductComponent } from '../product/product.component';
 import { StoreService } from '../../services/store.service';
 import { ProductsService } from '../../services/products.service';
+import { ReversePipe } from '../../pipes/reverse.pipe';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule, ProductComponent],
+  imports: [CommonModule, ProductComponent, ReversePipe],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',
 })
