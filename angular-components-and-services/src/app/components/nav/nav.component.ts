@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StoreService } from '../../services/store.service';
 
@@ -9,7 +9,7 @@ import { StoreService } from '../../services/store.service';
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.scss'
 })
-export class NavComponent {
+export class NavComponent implements OnInit {
   showMenu = false;
   counter: number = 0;
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from '../../models/product.model';
 import { ProductComponent } from '../product/product.component';
@@ -21,7 +21,7 @@ import { R3pl4c3Pipe } from '../../pipes/r3pl4c3.pipe';
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit {
   myShoppingCart: Product[] = [];
   total: number = 0;
   products: Product[] = [];
