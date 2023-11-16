@@ -47,7 +47,10 @@ export class HomeComponent {
     this.tasks.update((tasks) =>
       tasks.map((task, position) => {
         if (position === index) {
-          task.completed = !task.completed;
+          return {
+            ...task,
+            completed: !task.completed,
+          }
         }
         return task;
       })
