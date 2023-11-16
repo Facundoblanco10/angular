@@ -19,4 +19,22 @@ export class LabsComponent {
   age: number = 21;
   disabled: boolean = true;
   img: string = 'https://picsum.photos/200';
+
+  person = {
+    name: 'Bocha',
+    age: 21,
+    avatar: 'https://picsum.photos/200',
+  };
+
+  clickHandler() {
+    alert('Hola');
+  }
+
+  dblClickHandler() {
+    alert('HolaHola');
+  }
+
+  changeHandler(event: Event) {
+    console.log(event);
+  }
 }
