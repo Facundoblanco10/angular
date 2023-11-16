@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, WritableSignal, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -15,7 +15,7 @@ export class LabsComponent {
     'Crear proyecto',
     'Crear componentes',
   ];
-  name: string = 'Bocha';
+  name: WritableSignal<string> = signal('Bocha');
   age: number = 21;
   disabled: boolean = true;
   img: string = 'https://picsum.photos/200';
@@ -35,7 +35,10 @@ export class LabsComponent {
   }
 
   changeHandler(event: Event) {
-    console.log('changeHandler', event);
+    const input = event.target as HTMLInputElement;
+    const newValue = input.value;
+    this.name.set(newValue);
+    console.log(this.name());
   }
 
   keydownHandler(event: KeyboardEvent) {
