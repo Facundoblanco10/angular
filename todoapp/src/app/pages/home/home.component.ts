@@ -71,4 +71,37 @@ export class HomeComponent {
       tasks.filter((task, position) => position !== index)
     );
   }
+
+  updateTaskEditingMode(index: number) {
+    this.tasks.update((tasks) =>
+      tasks.map((task, position) => {
+        if (position === index) {
+          return {
+            ...task,
+            editing: !task.completed,
+          }
+        }
+        return {
+          ...task,
+          editing: false,
+        };
+      })
+    );
+  }
+
+  updateTaskText(index: number, event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.tasks.update((tasks) =>
+      tasks.map((task, position) => {
+        if (position === index) {
+          return {
+            ...task,
+            title: input.value,
+            editing: false,
+          }
+        }
+        return task;
+      })
+    );
+  }
 }
