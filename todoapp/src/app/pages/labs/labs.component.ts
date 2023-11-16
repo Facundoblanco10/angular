@@ -27,14 +27,22 @@ export class LabsComponent {
   };
 
   clickHandler() {
-    alert('Hola');
+    console.log('clickHandler');
   }
 
   dblClickHandler() {
-    alert('HolaHola');
+    console.log('dblClickHandler');
   }
 
   changeHandler(event: Event) {
-    console.log(event);
+    console.log('changeHandler', event);
+  }
+
+  keydownHandler(event: KeyboardEvent) {
+    const input = event.target as HTMLInputElement;
+    console.log(input.value);
+  }
+  keydownHandlerShift(){
+    console.log('keydownHandlerShift');
   }
 }

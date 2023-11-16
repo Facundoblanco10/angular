@@ -25,4 +25,12 @@
     (change)
   </p>
   <input type="number" [value]="person.age" (change)="changeHandler($event)">
+  <p>
+    (keydown)
+  </p>
+  <input type="text" [value]="person.name" (keydown)="keydownHandler($event)">
+  <p>
+    (keydown shift)
+  </p>
+  <input type="text" [value]="person.name" (keydown.shift.t)="keydownHandlerShift()">
 </div>
