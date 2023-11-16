@@ -21,11 +21,11 @@ export class LabsComponent {
   disabled: boolean = true;
   img: string = 'https://picsum.photos/200';
 
-  person = {
+  person = signal({
     name: 'Bocha',
     age: 21,
     avatar: 'https://picsum.photos/200',
-  };
+  });
 
   clickHandler() {
     console.log('clickHandler');
@@ -46,7 +46,14 @@ export class LabsComponent {
     const input = event.target as HTMLInputElement;
     console.log(input.value);
   }
+
   keydownHandlerShift(){
     console.log('keydownHandlerShift');
+  }
+
+  changeAge(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const newValue = input.value;
+    this.person.update((prev) => ({ ...prev, age: parseInt(newValue) }));
   }
 }
