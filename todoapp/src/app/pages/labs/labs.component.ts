@@ -10,11 +10,12 @@ import { CommonModule } from '@angular/common';
 })
 export class LabsComponent {
   welcome: string = 'Welcome to Angular 17';
-  tasks: string[] = [
+  tasks = signal([
     'Instalar Angular CLI',
     'Crear proyecto',
     'Crear componentes',
-  ];
+    'Crear servicios',
+  ]);
   name: WritableSignal<string> = signal('Bocha');
   age: number = 21;
   disabled: boolean = true;
