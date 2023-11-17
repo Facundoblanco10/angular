@@ -24,6 +24,10 @@ export class CounterComponent {
     console.log('ngOnChanges');
     console.log('-'.repeat(20));
     console.log(changes);
+    const duration = changes['duration'];
+    if (duration && duration.currentValue !== duration.previousValue) {
+      this.doSomething();
+    }
   }
 
   ngOnInit() {
@@ -32,8 +36,8 @@ export class CounterComponent {
     // async
     console.log('ngOnInit');
     console.log('-'.repeat(20));
-    console.log("duration -> ", this.duration);
-    console.log("message -> ", this.message);
+    console.log('duration -> ', this.duration);
+    console.log('message -> ', this.message);
   }
 
   ngAfterViewInit() {
@@ -46,5 +50,10 @@ export class CounterComponent {
   ngOnDestroy() {
     console.log('ngOnDestroy');
     console.log('-'.repeat(20));
+  }
+
+  doSomething() {
+    console.log('change duration');
+    // async or not async
   }
 }
