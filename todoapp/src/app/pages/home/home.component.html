@@ -17,8 +17,8 @@
     <!-- This section should be hidden by default and shown when there are todos -->
     <section class="main">
       <ul class="todo-list">
+        @for (task of tasksByFilter(); track task; let i = $index) {
         <li
-          *ngFor="let task of tasksByFilter(); index as i"
           (dblclick)="updateTaskEditingMode(i)"
           [class.editing]="task.editing"
           [class.completed]="task.completed"
@@ -33,8 +33,13 @@
             <label>{{ task.title }}</label>
             <button class="destroy" (click)="deleteTask(i)"></button>
           </div>
-          <input class="edit" (keydown.enter)="updateTaskText(i, $event)" [value]="task.title"/>
+          <input
+            class="edit"
+            (keydown.enter)="updateTaskText(i, $event)"
+            [value]="task.title"
+          />
         </li>
+        }
         <!-- <li class="completed">
           <div class="view">
             <input class="toggle" type="checkbox" checked />
@@ -54,27 +59,40 @@
       </ul>
     </section>
     <!-- This footer should be hidden by default and shown when there are todos -->
-    <footer class="footer" *ngIf="tasksByFilter().length > 0">
+    @if (tasksByFilter().length > 0) {
+    <footer class="footer">
       <!-- This should be `0 items left` by default -->
       <span class="todo-count">
         <strong>{{ tasksByFilter().length }}</strong>
-        <span *ngIf="tasksByFilter().length === 1; else moreItemsBlock"> item</span>
-        <ng-template #moreItemsBlock> items</ng-template>
+        @if (tasksByFilter().length === 1) {
+        <span> item</span>
+        } @else { items }
       </span>
       <!-- Remove this if you don't implement routing -->
       <ul class="filters">
         <li>
-          <a (click)="changeFilter('all')" [class.selected]="filter() === 'all'">All</a>
+          <a (click)="changeFilter('all')" [class.selected]="filter() === 'all'"
+            >All</a
+          >
         </li>
         <li>
-          <a (click)="changeFilter('pending')" [class.selected]="filter() === 'pending'">Pending</a>
+          <a
+            (click)="changeFilter('pending')"
+            [class.selected]="filter() === 'pending'"
+            >Pending</a
+          >
         </li>
         <li>
-          <a (click)="changeFilter('completed')" [class.selected]="filter() === 'completed'">Completed</a>
+          <a
+            (click)="changeFilter('completed')"
+            [class.selected]="filter() === 'completed'"
+            >Completed</a
+          >
         </li>
       </ul>
       <!-- Hidden if no completed items are left ↓ -->
       <button class="clear-completed">Clear completed</button>
     </footer>
+    }
   </div>
 </section>
