@@ -1,7 +1,7 @@
 <div class="grid grid-cols-3">
-  <app-product title="Product 1" [price]="12" img="https://picsum.photos/640?r=223"/>
-  <app-product title="Product 2" [price]="124" img="https://picsum.photos/640?r=243"/>
-  <app-product title="Product 3" [price]="765" img="https://picsum.photos/640?r=231"/>
-  <app-product title="Product 4" [price]="62" img="https://picsum.photos/640?r=263"/>
-  <app-product title="Product 5" [price]="98" img="https://picsum.photos/640?r=232"/>
+  <app-product title="Product 1" [price]="12" img="https://picsum.photos/640?r=223" (addToCart)="fromChild($event)"/>
+  <app-product title="Product 2" [price]="124" img="https://picsum.photos/640?r=243" (addToCart)="fromChild($event)"/>
+  <app-product title="Product 3" [price]="765" img="https://picsum.photos/640?r=231" (addToCart)="fromChild($event)"/>
+  <app-product title="Product 4" [price]="62" img="https://picsum.photos/640?r=263" (addToCart)="fromChild($event)"/>
+  <app-product title="Product 5" [price]="98" img="https://picsum.photos/640?r=232" (addToCart)="fromChild($event)"/>
 </div>
