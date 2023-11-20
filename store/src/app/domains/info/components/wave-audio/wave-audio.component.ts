@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import WaveSurfer from 'wavesurfer.js';
 
@@ -15,11 +15,19 @@ export class WaveAudioComponent {
     required: true,
   }) audioUrl!: string;
   @ViewChild('wave') container!: ElementRef;
+  private waveSurfer!: WaveSurfer;
+  isPlaying = signal(false);
 
   ngAfterViewInit() {
-    WaveSurfer.create({
+    this.waveSurfer = WaveSurfer.create({
       url: this.audioUrl,
       container: this.container.nativeElement,
     })
+    this.waveSurfer.on('play', () => this.isPlaying.set(true));
+    this.waveSurfer.on('pause', () => this.isPlaying.set(false));
+  }
+
+  playPause() {
+    this.waveSurfer.playPause();
   }
 }
