@@ -96,12 +96,12 @@
             {{ product.title }}
           </h5>
           <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            {{ product.price | currency }}
+            {{ product.price | currency:'$':'symbol':'1.0' }}
           </p>
         </div>
       </a>
     </div>
     }
-    <p>Total: {{ total() | currency }}</p>
+    <p>Total: {{ total() | currency:'$':'symbol':'1.0' }}</p>
   </div>
 </div>
