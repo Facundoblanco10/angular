@@ -4,6 +4,7 @@ import { ProductComponent } from '../../components/product/product.component';
 import { Product } from '../../../shared/models/product.model';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { CartService } from '../../../shared/services/cart.service';
+import { ProductService } from '../../../shared/services/product.service';
 
 @Component({
   selector: 'app-list',
@@ -16,53 +17,18 @@ export class ListComponent {
 
   products = signal<Product[]>([]);
   private cartService = inject(CartService);
+  private productService = inject(ProductService);
 
-  constructor() {
-    const initProducts: Product[] = [
-      {
-        id: Date.now(),
-        title: 'Producto 1',
-        price: 1000,
-        image: "https://picsum.photos/600?r=23 ",
-        creationAt: new Date().toISOString()
+  ngOnInit() {
+    this.productService.getProducts()
+    .subscribe({
+      next: (products) => {
+        this.products.set(products)
       },
-      {
-        id: Date.now(),
-        title: 'Producto 2',
-        price: 120,
-        image: "https://picsum.photos/600?r=26 ",
-        creationAt: new Date().toISOString()
-      },
-      {
-        id: Date.now(),
-        title: 'Producto 3',
-        price: 400,
-        image: "https://picsum.photos/600?r=33 ",
-        creationAt: new Date().toISOString()
-      },
-      {
-        id: Date.now(),
-        title: 'Producto 4',
-        price: 1000,
-        image: "https://picsum.photos/600?r=3 ",
-        creationAt: new Date().toISOString()
-      },
-      {
-        id: Date.now(),
-        title: 'Producto 5',
-        price: 120,
-        image: "https://picsum.photos/600?r=6 ",
-        creationAt: new Date().toISOString()
-      },
-      {
-        id: Date.now(),
-        title: 'Producto 6',
-        price: 400,
-        image: "https://picsum.photos/600?r=34 ",
-        creationAt: new Date().toISOString()
-      },
-    ]
-    this.products.set(initProducts);
+      error: (err) => {
+        console.log(err);
+      }
+    })
   }
 
   addToCart(product: Product) {
