@@ -14,17 +14,17 @@
       <ul class="flex space-x-6">
         <li>
           <a
-            href="#"
+            routerLink="/"
             class="block underline hover:underline"
             aria-current="page"
             >Home</a
           >
         </li>
         <li>
-          <a href="#" class="block hover:underline">About</a>
+          <a routerLink="/about" class="block hover:underline">About</a>
         </li>
         <li>
-          <a href="#" class="block hover:underline">Services</a>
+          <a routerLink="/services" class="block hover:underline">Services</a>
         </li>
       </ul>
     </div>
@@ -96,12 +96,12 @@
             {{ product.title }}
           </h5>
           <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            {{ product.price | currency:'$':'symbol':'1.0' }}
+            {{ product.price | currency : "$" : "symbol" : "1.0" }}
           </p>
         </div>
       </a>
     </div>
     }
-    <p>Total: {{ total() | currency:'$':'symbol':'1.0' }}</p>
+    <p>Total: {{ total() | currency : "$" : "symbol" : "1.0" }}</p>
   </div>
 </div>
