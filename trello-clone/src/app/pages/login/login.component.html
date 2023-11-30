@@ -1,14 +1,47 @@
-<div class="w-screen h-screen bg-white relative">
+<div class="w-screen h-screen bg-gray-50 relative">
   <div class="absolute w-full h-full">
-    <img class="absolute w-96 left-0 bottom-0" src="/assets/images/svg/login-bg-left.svg" alt="bg-left">
-    <img class="absolute w-96 right-0 bottom-0" src="/assets/images/svg/login-bg-right.svg" alt="bg-right">
+    <img
+      class="absolute w-96 left-0 bottom-0"
+      src="/assets/images/svg/login-bg-left.svg"
+      alt="bg-left"
+    />
+    <img
+      class="absolute w-96 right-0 bottom-0"
+      src="/assets/images/svg/login-bg-right.svg"
+      alt="bg-right"
+    />
   </div>
   <div class="relative w-4/12 m-auto">
     <header class="pt-6 pb-2 flex justify-center">
-      <img class="w-56" src="/assets/images/logo/logo-gradient-blue-trello.png" alt="logo">
+      <img
+        class="w-56"
+        src="/assets/images/logo/logo-gradient-blue-trello.png"
+        alt="logo"
+      />
     </header>
-    <div class="bg-gray-50 shadow rounded">
-      <h1>Card</h1>
+    <div class="bg-white shadow rounded py-4 px-6">
+      <div class="mb-4">
+        <h1 class="text-center font-semibold pt-4 pb-8">Log in to Trello</h1>
+        <form novalidate class="space-y-4">
+          <div class="relative">
+            <input
+              placeholder="Enter Email"
+              type="email"
+              class="w-full rounded bg-gray-100 border-2 border-gray-300"
+            />
+          </div>
+          <div class="relative">
+            <input
+              placeholder="Enter Password"
+              type="password"
+              class="w-full rounded bg-gray-100 border-2 border-gray-300"
+            />
+          </div>
+          <button class="text-white w-full font-medium rounded text-sm bg-green-700 px-5 py-2">
+            Log In
+          </button>
+        </form>
+      </div>
     </div>
   </div>
 </div>
