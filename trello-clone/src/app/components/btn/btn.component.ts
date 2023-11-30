@@ -24,6 +24,18 @@ export class BtnComponent {
       'focus:ring-success-300': true,
       'text-white': true,
     },
+    danger: {
+      'bg-danger-700': true,
+      'hover:bg-danger-800': true,
+      'focus:ring-danger-300': true,
+      'text-white': true,
+    },
+    sky: {
+      'bg-sky-700': true,
+      'hover:bg-sky-800': true,
+      'focus:ring-sky-300': true,
+      'text-white': true,
+    },
   }
 
   get colors() {
