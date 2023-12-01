@@ -11,5 +11,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 export class NavbarComponent {
 
   isOpen = false;
+  isOpenBody = false;
+
 
 }
