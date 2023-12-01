@@ -61,6 +61,22 @@
         </div>
       </cdk-accordion-item>
     </cdk-accordion>
+    <cdk-accordion>
+      @for (item of items; track item) {
+      <cdk-accordion-item #accordionItem="cdkAccordionItem">
+        <button class="w-full text-left" type="button" (click)="accordionItem.toggle()">
+          {{ item.label }}
+        </button>
+        <div [style.display]="accordionItem.expanded ? '' : 'none'">
+          <ul>
+            @for (subItem of item.items; track subItem) {
+              <li>{{ subItem.label }}</li>
+            }
+          </ul>
+        </div>
+      </cdk-accordion-item>
+      }
+    </cdk-accordion>
   </div>
   <div class="w-full">
     <h1 class="text-lg font-bold mb-4">
