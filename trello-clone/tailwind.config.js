@@ -11,7 +11,6 @@ module.exports = {
         success: colors.green,
         primary: colors.blue,
         danger: colors.red,
-        sky: colors.sky,
       }
     },
   },

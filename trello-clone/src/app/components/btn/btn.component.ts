@@ -9,7 +9,7 @@ import { NgClass } from '@angular/common';
 })
 export class BtnComponent {
   @Input() typeBtn: 'button' | 'submit' | 'reset' = 'button';
-  @Input() color: 'primary' | 'success' = 'primary';
+  @Input() color: 'primary' | 'success' | 'danger' = 'primary';
 
   mapColors = {
     primary: {
@@ -28,12 +28,6 @@ export class BtnComponent {
       'bg-danger-700': true,
       'hover:bg-danger-800': true,
       'focus:ring-danger-300': true,
-      'text-white': true,
-    },
-    sky: {
-      'bg-sky-700': true,
-      'hover:bg-sky-800': true,
-      'focus:ring-sky-300': true,
       'text-white': true,
     },
   }
