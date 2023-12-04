@@ -5,68 +5,72 @@
       <h2 class="text-xl font-bold text-white my-4">Demo Board</h2>
     </div>
     <div class="flex items-start w-full h-full">
-      <div class="rounded bg-gray-200 w-72 p-2 mr-3">
+      <div class="rounded bg-gray-200 w-72 p-2 mr-3" cdkDropListGroup>
         <div class="flex justify-between py-1">
           <h3 class="text-sm font-bold ml-2">To Do</h3>
         </div>
 
-        <div class="text-sm mt-2" cdkDropList (cdkDropListDropped)="drop($event)">
+        <div
+          id="todoList" [cdkDropListConnectedTo]="['doingList', 'doneList']"
+          class="text-sm mt-2 min-h-[2.5rem]"
+          cdkDropList
+          (cdkDropListDropped)="drop($event)"
+          [cdkDropListData]="todos"
+        >
           @for (todo of todos; track todo) {
-            <div
-              cdkDrag
-              class="bg-white shadow p-2 rounded mt-2 border-b border-x-gray-300 cursor-pointer hover:bg-gray-400"
-            >
-              {{ todo.title }}
-            </div>
+          <div
+            cdkDrag
+            class="bg-white shadow p-2 rounded mt-2 border-b border-x-gray-300 cursor-pointer hover:bg-gray-400"
+          >
+            {{ todo.title }}
+          </div>
           }
         </div>
       </div>
 
-      <div class="rounded bg-gray-200 w-72 p-2 mr-3">
+      <div class="rounded bg-gray-200 w-72 p-2 mr-3" cdkDropListGroup>
         <div class="flex justify-between py-1">
           <h3 class="text-sm font-bold ml-2">Doing</h3>
         </div>
 
-        <div class="text-sm mt-2">
+        <div
+          id="doingList" [cdkDropListConnectedTo]="['todoList', 'doneList']"
+          class="text-sm mt-2 min-h-[2.5rem]"
+          cdkDropList
+          (cdkDropListDropped)="drop($event)"
+          [cdkDropListData]="doing"
+        >
+          @for (todo of doing; track todo) {
           <div
+            cdkDrag
             class="bg-white shadow p-2 rounded mt-2 border-b border-x-gray-300 cursor-pointer hover:bg-gray-400"
           >
-            Task 1
+            {{ todo.title }}
           </div>
-          <div
-            class="bg-white shadow p-2 rounded mt-2 border-b border-x-gray-300 cursor-pointer hover:bg-gray-400"
-          >
-            Task 2
-          </div>
-          <div
-            class="bg-white shadow p-2 rounded mt-2 border-b border-x-gray-300 cursor-pointer hover:bg-gray-400"
-          >
-            Task 3
-          </div>
+          }
         </div>
       </div>
 
-      <div class="rounded bg-gray-200 w-72 p-2 mr-3">
+      <div class="rounded bg-gray-200 w-72 p-2 mr-3" cdkDropListGroup>
         <div class="flex justify-between py-1">
           <h3 class="text-sm font-bold ml-2">Done</h3>
         </div>
 
-        <div class="text-sm mt-2">
+        <div
+          id="doneList" [cdkDropListConnectedTo]="['todoList', 'doingList']"
+          class="text-sm mt-2 min-h-[2.5rem]"
+          cdkDropList
+          (cdkDropListDropped)="drop($event)"
+          [cdkDropListData]="done"
+        >
+          @for (todo of done; track todo) {
           <div
+            cdkDrag
             class="bg-white shadow p-2 rounded mt-2 border-b border-x-gray-300 cursor-pointer hover:bg-gray-400"
           >
-            Task 1
+            {{ todo.title }}
           </div>
-          <div
-            class="bg-white shadow p-2 rounded mt-2 border-b border-x-gray-300 cursor-pointer hover:bg-gray-400"
-          >
-            Task 2
-          </div>
-          <div
-            class="bg-white shadow p-2 rounded mt-2 border-b border-x-gray-300 cursor-pointer hover:bg-gray-400"
-          >
-            Task 3
-          </div>
+          }
         </div>
       </div>
     </div>
