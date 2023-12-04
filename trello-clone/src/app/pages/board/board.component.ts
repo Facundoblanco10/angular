@@ -6,7 +6,7 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import { ToDo } from '../../models/todo.model';
+import { Column, ToDo } from '../../models/todo.model';
 
 @Component({
   selector: 'app-board',
@@ -28,50 +28,66 @@ import { ToDo } from '../../models/todo.model';
   ],
 })
 export class BoardComponent {
-  todos: ToDo[] = [
+  columns: Column[] = [
     {
-      id: '1',
-      title: 'First todo',
+      id: 'todo',
+      title: 'To Do',
+      todos: [
+        {
+          id: '1',
+          title: 'First todo',
+        },
+        {
+          id: '2',
+          title: 'Second todo',
+        },
+        {
+          id: '3',
+          title: 'Third todo',
+        },
+      ],
     },
     {
-      id: '2',
-      title: 'Second todo',
+      id: 'doing',
+      title: 'Doing',
+      todos: [
+        {
+          id: '4',
+          title: 'Fourth todo',
+        },
+        {
+          id: '5',
+          title: 'Fifth todo',
+        },
+        {
+          id: '6',
+          title: 'Sixth todo',
+        },
+      ],
     },
     {
-      id: '3',
-      title: 'Third todo',
+      id: 'done',
+      title: 'Done',
+      todos: [
+        {
+          id: '7',
+          title: 'Seventh todo',
+        },
+        {
+          id: '8',
+          title: 'Eighth todo',
+        },
+        {
+          id: '9',
+          title: 'Ninth todo',
+        },
+      ],
     },
   ];
 
-  doing: ToDo[] = [
-    {
-      id: '4',
-      title: 'Fourth todo',
-    },
-    {
-      id: '5',
-      title: 'Fifth todo',
-    },
-    {
-      id: '6',
-      title: 'Sixth todo',
-    },
-  ];
-
-  done: ToDo[] = [
-    {
-      id: '7',
-      title: 'Seventh todo',
-    },
-    {
-      id: '8',
-      title: 'Eighth todo',
-    },
-    {
-      id: '9',
-      title: 'Ninth todo',
-    },
-  ];
+  todos: ToDo[] = [];
+  doing: ToDo[] = [];
+  done: ToDo[] = [];
 
   drop(event: CdkDragDrop<ToDo[]>) {
     if (event.previousContainer === event.container) {
@@ -88,5 +104,19 @@ export class BoardComponent {
         event.currentIndex
       );
     }
+  }
+
+  getConnectedLists(currentColumnId: string): string[] {
+    return this.columns
+      .map(col => col.id)
+      .filter(id => id !== currentColumnId);
+  }
+
+  addColumn() {
+    this.columns.push({
+      id: 'new ' + (this.columns.length + 1),
+      title: 'New Column ' + (this.columns.length + 1),
+      todos: [],
+    });
   }
 }
