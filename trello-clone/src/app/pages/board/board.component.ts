@@ -124,11 +124,16 @@ export class BoardComponent {
     });
   }
 
-  openDialog() {
-    this._dialog.open(TodoDialogComponent, {
+  openDialog(todo: ToDo) {
+    const dialogRef = this._dialog.open(TodoDialogComponent, {
       minWidth: '300',
       maxWidth: '50%',
-      autoFocus: false,
-    })
+      data: {
+        todo: todo,
+      }
+    });
+    dialogRef.closed.subscribe(output => {
+      console.log(output);
+    });
   }
 }
