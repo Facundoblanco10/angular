@@ -8,35 +8,25 @@ import { NgClass } from '@angular/common';
   templateUrl: './btn.component.html',
 })
 export class BtnComponent {
-  @Input() typeBtn: 'button' | 'submit' | 'reset' = 'button';
-  @Input() color: 'primary' | 'success' | 'danger' = 'primary';
-
-  mapColors = {
-    primary: {
-      'bg-primary-700': true,
-      'hover:bg-primary-800': true,
-      'focus:primary-300': true,
-      'text-white': true,
-    },
-    success: {
-      'bg-success-700': true,
-      'hover:bg-success-800': true,
-      'focus:ring-success-300': true,
-      'text-white': true,
-    },
-    danger: {
-      'bg-danger-700': true,
-      'hover:bg-danger-800': true,
-      'focus:ring-danger-300': true,
-      'text-white': true,
-    },
-  }
+  @Input() typeBtn: 'button' | 'reset' | 'submit' = 'button';
+  @Input() color = 'primary';
 
   get colors() {
-    const colors = this.mapColors[this.color];
-    if (colors) {
-      return colors;
-    }
-    return {};
+    return {
+      'text-white': this.color === 'success' || this.color === 'primary' || this.color === 'red',
+      'text-gray-700': this.color === 'gray-light',
+      'bg-success-700': this.color === 'success',
+      'hover:bg-success-800': this.color === 'success',
+      'focus:ring-success-300': this.color === 'success',
+      'bg-primary-700': this.color === 'primary',
+      'hover:bg-primary-800': this.color === 'primary',
+      'focus:ring-primary-300': this.color === 'primary',
+      'bg-red-700': this.color === 'red',
+      'hover:bg-red-800': this.color === 'red',
+      'focus:ring-red-300': this.color === 'red',
+      'bg-gray-200': this.color === 'gray-light',
+      'hover:bg-gray-500': this.color === 'gray-light',
+      'focus:ring-gray-50': this.color === 'gray-light',
+    };
   }
 }
