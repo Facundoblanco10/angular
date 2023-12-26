@@ -4,28 +4,32 @@ import { HttpClient } from '@angular/common/http';
 import { CdkTableModule } from '@angular/cdk/table';
 import { Product } from '../../models/product.model';
 import { NgClass } from '@angular/common';
+import { DataSourceProduct } from './data-source';
+import { BtnComponent } from '../../components/btn/btn.component';
 
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [NavbarComponent, CdkTableModule, NgClass],
+  imports: [NavbarComponent, CdkTableModule, NgClass, BtnComponent],
   templateUrl: './table.component.html',
 })
 export class TableComponent {
   private http = inject(HttpClient);
 
-  products: Product[] = [];
-  columns: string[] = ['Number', 'Name', 'price', 'cover'];
+  dataSource = new DataSourceProduct();
+  columns: string[] = ['Number', 'Name', 'price', 'cover', 'actions'];
   totalPrice: number = 0;
 
   ngOnInit() {
     this.http
       .get<Product[]>('https://api.escuelajs.co/api/v1/products')
       .subscribe((data) => {
-        this.products = data;
-        this.totalPrice = this.products
-          .map((product) => product.price)
-          .reduce((a, b) => a + b, 0);
+        this.dataSource.init(data);
+        this.totalPrice = this.dataSource.getTotalPrice();
       });
+  }
+
+  update(product: Product) {
+    this.dataSource.update(product.id, { price: 1000});
   }
 }
