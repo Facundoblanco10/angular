@@ -1,17 +1,20 @@
 import { Component, inject } from '@angular/core';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { HttpClient } from '@angular/common/http';
-import { ScrollingModule } from '@angular/cdk/scrolling';
+import { CdkTableModule } from '@angular/cdk/table';
+import { Product } from '../../models/product.model';
 
 @Component({
-  selector: 'app-scroll',
+  selector: 'app-table',
   standalone: true,
-  imports: [NavbarComponent, ScrollingModule],
-  templateUrl: './scroll.component.html',
+  imports: [NavbarComponent, CdkTableModule],
+  templateUrl: './table.component.html',
 })
-export class ScrollComponent {
+export class TableComponent {
   private http = inject(HttpClient);
+
   products: Product[] = [];
+  columns: string[] = ['Number', 'Name', 'price', 'cover'];
 
   ngOnInit() {
     this.http
